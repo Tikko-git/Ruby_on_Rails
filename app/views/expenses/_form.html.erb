@@ -1,0 +1,56 @@
+<%# app/views/expenses/_form.html.erb %>
+
+<%= form_with(model: expense, local: true, class: "p-4 bg-white border rounded shadow-sm") do |f| %>
+
+  <%# Поле Назва %>
+  <div class="mb-3">
+    <%= f.label :title, "Назва витрати", class: "form-label fw-bold" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Наприклад: Продукти" %>
+  </div>
+
+  <div class="row">
+    <%# Поле Категорія  %>
+    <div class="col-md-6 mb-3">
+      <%= f.label :category, "Категорія", class: "form-label fw-bold" %>
+      <%= f.collection_select :category, Category.all, :name, :name, { include_blank: "Оберіть категорію" }, { class: "form-select" } %>
+    </div>
+
+    <%# Поле Сума %>
+    <div class="col-md-6 mb-3">
+      <%= f.label :amount, "Сума (грн)", class: "form-label fw-bold" %>
+      <%= f.number_field :amount, step: 0.01, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%# Поле Дата %>
+    <div class="col-md-6 mb-3">
+      <%= f.label :date, "Дата витрати", class: "form-label fw-bold" %>
+      <%= f.date_field :date, class: "form-control", value: (f.object.date || Time.now).strftime('%Y-%m-%d') %>
+    </div>
+
+    <%# Поле Статус (Enum випадаючий список) %>
+    <div class="col-md-6 mb-3">
+      <%= f.label :status, "Статус", class: "form-label fw-bold" %>
+      <%= f.select :status, Expense.statuses.keys, {}, { class: "form-select" } %>
+    </div>
+  </div>
+
+  <%# Поле Нотатки (додаємо згідно завдання) %>
+  <div class="mb-3">
+    <%= f.label :notes, "Нотатки", class: "form-label fw-bold" %>
+    <%= f.text_area :notes, rows: 2, class: "form-control" %>
+  </div>
+
+  <%# Поле Продавця %>
+  <div class="mb-3">
+    <%= f.label :merchant, "Продавець", class: "form-label" %>
+    <%= f.text_field :merchant, class: "form-control" %>
+  </div>
+
+  <%# Кнопка збереження %>
+  <div class="mt-4">
+    <%= f.submit "Зберегти", class: "btn btn-primary px-4" %>
+    <%= link_to "Назад до списку", expenses_path, class: "btn btn-link text-secondary text-decoration-none" %>
+  </div>
+<% end %>
