@@ -1,0 +1,19 @@
+---
+1: !ruby/object:Expense
+  title: Ремонт авто
+  categories:
+  - Авто
+  payment_methods: []
+  amount: 4000.0
+  date: '2026-05-22'
+  notes: Зам?на зеток
+  status: paid
+2: !ruby/object:Expense
+  title: Аптека
+  categories:
+  - Здоров'я
+  payment_methods: []
+  amount: 450.0
+  date: '2026-05-22'
+  notes: ''
+  status: planned
