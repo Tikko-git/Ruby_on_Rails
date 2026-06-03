@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow-sm border-0">
+      <div class="card-header bg-white py-3">
+        <h2 class="h4 mb-0 fw-bold text-dark">Деталі витрати</h2>
+      </div>
+
+      <div class="card-body p-4">
+        <div class="row mb-4">
+          <div class="col-sm-6">
+            <label class="text-muted small text-uppercase fw-bold d-block">Назва</label>
+            <p class="fs-5 text-dark"><%= @expense.title %></p>
+          </div>
+          <div class="col-sm-6 text-sm-end">
+            <label class="text-muted small text-uppercase fw-bold d-block">Сума</label>
+            <div class="fs-4"><%= amount_badge(@expense) %></div>
+          </div>
+        </div>
+
+        <hr class="text-muted">
+
+        <div class="row mb-4">
+          <div class="col-sm-4">
+            <label class="text-muted small text-uppercase fw-bold d-block">Категорія</label>
+            <span class="badge rounded-pill bg-light text-dark border px-3"><%= @expense.category %></span>
+          </div>
+          <div class="col-sm-4">
+            <label class="text-muted small text-uppercase fw-bold d-block">Дата</label>
+            <p class="text-dark"><%= @expense.date %></p>
+          </div>
+          <div class="col-sm-4">
+            <label class="text-muted small text-uppercase fw-bold d-block">Статус</label>
+            <p class="text-dark">
+              <% if @expense.status == 'paid' || @expense.status == 'Оплачено' %>
+                <span class="text-success fw-bold small">✔ Оплачено</span>
+              <% else %>
+                <span class="text-muted small"><%= @expense.status %></span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="text-muted small text-uppercase fw-bold d-block">Нотатки</label>
+          <p class="text-secondary italic"><%= @expense.notes.presence || "Немає нотаток" %></p>
+        </div>
+
+        <div class="d-flex gap-2 border-top pt-4">
+          <%= link_to "Редагувати", edit_expense_path(@expense), class: "btn btn-primary px-4" %>
+          <%= link_to "Назад до списку", expenses_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
