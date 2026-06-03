@@ -1,0 +1,30 @@
+<%= form_with(model: expense) do |f| %>
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :category, "Категорія" %><br>
+    <%= f.select :category, Category.pluck(:name) %>
+  </div>
+
+  <div>
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount, step: 1.0 %>
+  </div>
+
+  <div>
+    <%= f.label :date, "Дата витрати" %><br>
+    <%= f.date_field :date, value: Time.now.strftime('%Y-%m-%d') %>
+  </div>
+
+  <div>
+    <%= f.label :status %><br>
+    <%= f.select :status, Expense.statuses.keys.map { |s| [s.humanize, s] } %>
+  </div>
+
+  <div>
+    <%= f.submit "Зберегти" %>
+  </div>
+<% end %>

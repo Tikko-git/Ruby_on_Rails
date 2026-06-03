@@ -1,0 +1,33 @@
+<h1>Список витрат</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<%= link_to "Додати нову витрату", new_expense_path %> |
+<%= link_to "Показати тільки оплачені", paid_expenses_path %>
+
+<table border="1" style="margin-top: 20px; border-collapse: collapse; width: 100%;">
+  <thead>
+  <tr>
+    <th>Назва</th>
+    <th>Категорія</th>
+    <th>Сума</th>
+    <th>Статус</th>
+    <th>Дії</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.title %></td>
+      <td><%= expense.category %></td>
+      <td><%= expense.amount %></td>
+      <td><%= expense.status %></td>
+      <td>
+        <%= link_to "Перегляд", expense %> |
+        <%= link_to "Редагувати", edit_expense_path(expense) %>
+        <%= button_to "Видалити", expense, method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

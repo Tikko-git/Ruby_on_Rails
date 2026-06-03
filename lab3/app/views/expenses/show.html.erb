@@ -1,0 +1,38 @@
+<h1>Деталі витрати</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <strong>Назва:</strong>
+  <%= @expense.title %>
+</p>
+
+<p>
+  <strong>Категорія:</strong>
+  <%= @expense.category %>
+</p>
+
+<p>
+  <strong>Сума:</strong>
+  <%= @expense.amount %>
+</p>
+
+<p>
+  <strong>Дата:</strong>
+  <%= @expense.date %>
+</p>
+
+<p>
+  <strong>Статус:</strong>
+  <%= @expense.status %>
+</p>
+
+<p>
+  <strong>Нотатки:</strong>
+  <%= @expense.notes %>
+</p>
+
+<div>
+  <%= link_to "Редагувати", edit_expense_path(@expense) %> |
+  <%= link_to "Назад до списку", expenses_path %>
+</div>
